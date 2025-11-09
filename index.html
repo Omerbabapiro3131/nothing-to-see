@@ -1,63 +1,26 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Embed Container</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Site İçinde Site</title>
   <style>
-    html,body { height:100%; margin:0; }
-    .frame-wrap {
-      position:fixed;
-      inset:0;
-      display:flex;
-      flex-direction:column;
-      background:#000;
+    html, body {
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
     }
     iframe {
-      flex:1 1 auto;
-      width:100%;
-      height:100%;
-      border:0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
     }
-    /* küçük üst bar istersen: */
-    .topbar {
-      height:44px;
-      background:#111;
-      color:#fff;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      padding:0 12px;
-      font-family:system-ui,Segoe UI,Roboto,Arial;
-    }
-    .btn { cursor:pointer; padding:6px 8px; border-radius:6px; background:#222; color:#fff; }
   </style>
 </head>
 <body>
-  <div class="frame-wrap">
-    <div class="topbar">
-      <div style="font-weight:600">Benim Site İçinde Site</div>
-      <div style="flex:1"></div>
-      <button class="btn" id="reload">Yenile</button>
-    </div>
-
-    <!-- hedef URL'yi buraya koy -->
-    <iframe id="inner" src="https://jgcv7rj7nw7je.mocha.app/" allowfullscreen></iframe>
-  </div>
-
-  <script>
-    // iframe yüklenmezse veya engellenirse kullanıcıya bilgi göstermek için:
-    const iframe = document.getElementById('inner');
-    const reload = document.getElementById('reload');
-    reload.addEventListener('click', ()=> iframe.src = iframe.src);
-
-    // Hedef sayfa iframe içinde engellenmişse bazı tarayıcılarda 'load' yine çalışmayabilir.
-    iframe.addEventListener('load', () => {
-      console.log('iframe yüklendi (veya load eventi tetiklendi).');
-    });
-
-    // Bazı durumlarda X-Frame-Options veya CSP engeliyse iframe içeriği gözükmez.
-    // Bu durumda sunucu tarafı proxy çözümü gerekir (aşağıda).
-  </script>
+  <iframe src="https://jgcv7rj7nw7je.mocha.app/" allowfullscreen></iframe>
 </body>
 </html>
